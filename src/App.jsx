@@ -297,7 +297,7 @@ const App = () => {
           ianjojo
         </a>
       </p>
-      <div className='cardbox flex flex-col items-center space-evenly relative w-[90%] lg:h-[28rem] bg-gradient-to-br from-green-200 to-green-600 bg-cover bg-blur rounded-lg p-4 mt-4'>
+      <div className='cardbox flex flex-col items-center space-evenly relative w-[90%] h-[20rem] lg:h-[28rem] bg-gradient-to-br from-green-200 to-green-600 bg-cover bg-blur rounded-lg p-4 mt-4'>
         <p className='absolute -top-1 lg:top-0'>Dealer</p>
         <p className='absolute -bottom-0 lg:bottom-2'>Your Hand</p>
         <div className='w-full h-[2px] bg-black/20 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2'></div>
