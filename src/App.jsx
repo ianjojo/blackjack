@@ -20,7 +20,7 @@ const App = () => {
     if (value > wallet) {
       alert("You don't have enough money");
     } else {
-      setCurrentBet(Number(value));
+      setCurrentBet(currentBet + Number(value));
       setWallet(wallet - value);
 
       setGameStarted(true);
@@ -229,6 +229,7 @@ const App = () => {
     setMessage("");
     setGameStarted(true);
     setGameOver(false);
+    setCurrentBet(0);
     const deck = generateDeck();
     const shuffledDeck = shuffleDeck(deck);
 
@@ -321,6 +322,7 @@ const App = () => {
           '
           >
             <p>Current hand score: {playerCount}</p>
+            <p>Current bet: {currentBet}</p>
           </div>
           <div className='flex justify-center my-2'>
             <button
