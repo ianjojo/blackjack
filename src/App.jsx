@@ -298,8 +298,9 @@ const App = () => {
         </a>
       </p>
       <div className='cardbox flex flex-col items-center space-evenly relative w-[90%] h-[20rem] lg:h-[28rem] bg-gradient-to-br from-green-200 to-green-600 bg-cover bg-blur rounded-lg p-4 mt-4'>
-        <p className='absolute -top-1 lg:top-0'>Dealer</p>
-        <p className='absolute -bottom-0 lg:bottom-2'>Your Hand</p>
+        <p className='absolute -top-1 right-1 lg:top-0'>Dealer's Hand</p>
+        <p className='absolute -bottom-0  right-1 lg:bottom-2'>Your Hand</p>
+        <p className='absolute left-1 bottom-1'>Your wallet: {wallet}</p>
         <div className='w-full h-[2px] bg-black/20 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2'></div>
         <div className='flex flex-col justify-evenly h-full'>
           <div className='dealer-hand flex-col justify-center items-center'>
@@ -320,7 +321,6 @@ const App = () => {
           '
           >
             <p>Current hand score: {playerCount}</p>
-            <p>Your wallet: {wallet}</p>
           </div>
           <div className='flex justify-center my-2'>
             <button
@@ -390,75 +390,6 @@ const App = () => {
       >
         {!gameStarted ? "New Game" : "Deal again"}
       </button>
-      {/* <p>Dealer: {dealerCount}</p> */}
-
-      {/* <div className='buttons'>
-        <button
-          onClick={() => {
-            startNewGame();
-          }}
-        >
-          New Game
-        </button>
-        <button
-          onClick={() => {
-            hit();
-          }}
-        >
-          Hit
-        </button>
-        <button
-          onClick={() => {
-            stand();
-          }}
-        >
-          Stand
-        </button>
-      </div>
-
-      <p>Wallet: ${wallet}</p>
-      {!currentBet ? (
-        <div className='input-bet'>
-          <form>
-            <input type='text' name='bet' placeholder='' value={inputValue} />
-          </form>
-          <button
-            onClick={() => {
-              placeBet();
-            }}
-          >
-            Place Bet
-          </button>
-        </div>
-      ) : null}
-      {gameOver ? (
-        <div className='buttons'>
-          <button
-            onClick={() => {
-              startNewGame("continue");
-            }}
-          >
-            Continue
-          </button>
-        </div>
-      ) : null}
-      <p>Your Hand ({player.count})</p>
-      <table className='cards'>
-        <tr>
-          {player.cards.map((card, i) => {
-            return <Card key={i} number={card.number} suit={card.suit} />;
-          })}
-        </tr>
-      </table>
-
-      <p>Dealer's Hand ({dealer.count})</p>
-      <table className='cards'>
-        <tr>
-          {this.state.dealer.cards.map((card, i) => {
-            return <Card key={i} number={card.number} suit={card.suit} />;
-          })}
-        </tr>
-      </table> */}
 
       <p>{message}</p>
     </div>
