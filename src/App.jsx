@@ -149,7 +149,7 @@ const App = () => {
         {cards.length > 0 ? (
           cards.map((card, index) => (
             <div
-              className='card border border-solid rounded-lg h-32   w-20 shadow-lg bg-white mx-1 my-2'
+              className='card border border-solid rounded-lg h-32   w-20 shadow-xl bg-white mx-1 my-2 '
               key={index}
             >
               <div className={`card-${card.suit.toLowerCase()}`}>
@@ -171,7 +171,7 @@ const App = () => {
             <div
               className={` ${
                 card.isFirst ? "bg-blue-300" : "bg-white"
-              } card border border-solid rounded-lg h-32   w-20 shadow-lg  mx-1 my-2`}
+              } card border border-solid rounded-lg h-32   w-20 shadow-xl  mx-1 my-2 `}
               key={index}
             >
               <div
@@ -290,18 +290,31 @@ const App = () => {
     }
   }, [playerHand, dealerHand, gameOver]);
   return (
-    <div className='flex flex-col justify-center items-center'>
-      <h2 className='text-2xl'>Blackjack!</h2>
-      <p>
-        by{" "}
-        <a href='https://ianjojo.dev' className='underline' target='_blank'>
-          ianjojo
-        </a>
-      </p>
-      <div className='cardbox flex flex-col items-center space-evenly relative w-[90%] h-[20rem] lg:h-[28rem] bg-gradient-to-br from-green-200 to-green-600 bg-cover bg-blur rounded-lg p-4 mt-4'>
-        <p className='absolute -top-1 right-1 lg:top-0'>Dealer's Hand</p>
-        <p className='absolute -bottom-0  right-1 lg:bottom-2'>Your Hand</p>
-        <p className='absolute left-1 bottom-1'>Your wallet: {wallet}</p>
+    <div
+      className={`flex flex-col justify-start items-center h-screen bg-[url('/src/assets/bg1.png')]`}
+    >
+      <div className='flex flex-col justify-center items-center p-6 w-[90%] lg:w-[60%] mt-6  rounded-xl bg-clip-padding backdrop-filter backdrop-blur-xl bg-opacity-30 border border-black/20 shadow-lg'>
+        <h2 className='text-2xl text-white/75'>Blackjack!</h2>
+        <p className=' text-white/75'>
+          by{" "}
+          <a href='https://ianjojo.dev' className='underline' target='_blank'>
+            ianjojo
+          </a>
+        </p>
+      </div>
+      <div
+        className='cardbox flex flex-col items-center space-evenly relative w-[90%] lg:w-[60%] h-[20rem] lg:h-[28rem]  bg-green-400 rounded-md bg-clip-padding backdrop-filter backdrop-blur-xl bg-opacity-30 border border-black/20 shadow-lg
+ p-4 mt-4'
+      >
+        <p className='absolute -top-1 right-1 lg:top-0 text-white font-bold'>
+          Dealer's Hand
+        </p>
+        <p className='absolute -bottom-0  right-1 lg:bottom-2 text-white font-bold'>
+          Your Hand
+        </p>
+        <p className='absolute left-1 bottom-1 text-white font-bold'>
+          Your wallet: {wallet}
+        </p>
         <div className='w-full h-[2px] bg-black/20 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2'></div>
         <div className='flex flex-col justify-evenly h-full'>
           <div className='dealer-hand flex-col justify-center items-center'>
@@ -316,13 +329,13 @@ const App = () => {
       {/* CHIPS */}
 
       {gameStarted && !gameOver && (
-        <div className='scores flex flex-col lg:flex-row justify-evenly  p-2 lg:p-6 items-center bg-violet-200 mt-4 w-[90%] rounded-xl'>
+        <div className='scores flex flex-col lg:flex-row justify-evenly  p-2 lg:p-6 items-center bg-violet-400 mt-4 w-[90%] lg:w-[60%] rounded-xl bg-clip-padding backdrop-filter backdrop-blur-xl bg-opacity-30 border border-black/20 shadow-lg'>
           <div
-            className='flex flex-col justify-center w-full lg:w-[30%] items-center
+            className='flex flex-col justify-center w-full lg:w-[30%] items-start
           '
           >
-            <p>Current hand score: {playerCount}</p>
-            <p>Current bet: {currentBet}</p>
+            <p className='text-white'>Current hand score: {playerCount}</p>
+            <p className='text-white'>Current bet: {currentBet}</p>
           </div>
           <div className='flex justify-center my-2'>
             <button
@@ -388,12 +401,14 @@ const App = () => {
         disabled={gameStarted}
         className={`${
           gameStarted ? "hidden" : ""
-        } mt-4 bg-gradient-to-br from-yellow-400 to-yellow-500 hover:from-yellow-500 hover:to-yellow-600 active:from-yellow-600 active:to-yellow-700 text-white font-bold py-2 px-4 rounded-lg shadow-md transition duration-300 ease-in-out`}
+        } mt-4 bg-gradient-to-br from-yellow-400 to-yellow-500 hover:from-yellow-500 hover:to-yellow-600 active:from-yellow-600 active:to-yellow-700 text-white font-bold py-2 px-4 rounded-lg shadow-md transition duration-300 ease-in-out opacity-75`}
       >
         {!gameStarted ? "New Game" : "Deal again"}
       </button>
 
-      <p>{message}</p>
+      <div className='w-[90%] lg:w-[60%] rounded-lg  h-[4rem] my-4 flex justify-center items-center bg-clip-padding backdrop-filter backdrop-blur-xl bg-opacity-30 border border-black/20 shadow-lg'>
+        <p className='text-white text-xl'>{message}</p>
+      </div>
     </div>
   );
 };
