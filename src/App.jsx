@@ -47,6 +47,7 @@ const App = () => {
     dealerFinalHand[0].isFirst = false;
     setDealerHand(dealerFinalHand);
     setGameStarted(false);
+    let playerHasWon = false;
     if (playerCount > 21) {
       setMessage("You lose");
 
@@ -56,18 +57,28 @@ const App = () => {
       }
     } else if (dealerCount > 21) {
       setMessage("You win");
-      setWallet(wallet + currentBet + currentBet);
+      if (!playerHasWon) {
+        setWallet(wallet + currentBet + currentBet);
+        playerHasWon = true;
+      }
+
       if (wallet < 0) {
         setWallet(0);
         setMessage("You are out of money");
       }
+      return;
     } else if (playerCount > dealerCount) {
       setMessage("You win");
-      setWallet(wallet + currentBet + currentBet);
+
+      if (!playerHasWon) {
+        setWallet(wallet + currentBet + currentBet);
+        playerHasWon = true;
+      }
       if (wallet < 0) {
         setWallet(0);
         setMessage("You are out of money");
       }
+      return;
     } else if (playerCount < dealerCount) {
       setMessage("You lose");
 
@@ -75,6 +86,7 @@ const App = () => {
         setWallet(0);
         setMessage("You are out of money");
       }
+      return;
     } else {
       setMessage("Draw");
     }
@@ -99,7 +111,7 @@ const App = () => {
 
       setDeck(dealerCard1.updatedDeck);
     } else {
-      endGame();
+      setGameOver(true);
     }
   };
 
@@ -268,22 +280,22 @@ const App = () => {
     } else if (currentDealerScore > 21) {
       setGameOver(true);
       setMessage("Dealer busted!");
-      setWallet(wallet + currentBet * 2);
+      // setWallet(wallet + currentBet + currentBet);
     } else if (playerHand.length === 2 && currentPlayerScore === 21) {
       setGameOver(true);
       setMessage("You got blackjack!");
-      setWallet(wallet + currentBet * 2);
+      // setWallet(wallet + currentBet + currentBet);
     } else if (dealerHand.length === 2 && currentDealerScore === 21) {
       setGameOver(true);
       setMessage("Dealer got blackjack!");
     } else if (currentPlayerScore === 21 && currentDealerScore === 21) {
       setGameOver(true);
       setMessage("Push!");
-      setWallet(wallet + currentBet);
+      // setWallet(wallet + currentBet);
     } else if (currentPlayerScore === 21 && currentDealerScore !== 21) {
       setGameOver(true);
       setMessage("You got blackjack!");
-      setWallet(wallet + currentBet * 2);
+      // setWallet(wallet + currentBet * 2);
     } else if (currentDealerScore === 21 && currentPlayerScore !== 21) {
       setGameOver(true);
       setMessage("Dealer got blackjack!");
